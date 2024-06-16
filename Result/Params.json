@@ -1,5 +1,5 @@
 {
-    "batch_size": 1024.0,
+    "batch_size": 512.0,
     "noise_dims": 128.0,
     "label_dims": 2.0, 
     "numIter": 2000.0,

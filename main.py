@@ -77,7 +77,11 @@ if __name__ == '__main__':
 	loss_history = train((generator, discriminator), (optimizer_G, optimizer_D), dataloader, params)
 
 	# plot loss history and save
-	utils.plot_loss_history(loss_history, output_dir)
+
+
+	loss_history1 = [t.cpu() for t in loss_history[0]]
+	loss_history2 = [t.cpu() for t in loss_history[1]]
+	utils.plot_loss_history((loss_history1, loss_history2), output_dir)
 
 	# Generate images and save 
 	wavelengths = [w for w in range(500, 1301, 50)]

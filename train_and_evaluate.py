@@ -21,7 +21,8 @@ def visualize_training_generator(generator, fig_path, cuda=False, n_row = 4, n_c
 
     paddings = (0, 0, 0, imgs.size(2)-1)
     imgs = F.pad(imgs, paddings, mode='reflect')
-    save_image(imgs, fig_path, n_row)
+    print("Fig path : " + fig_path)
+    save_image(tensor=imgs, fp=fig_path, format="png", nrow=n_row)
     generator.train()
 
 
@@ -170,7 +171,7 @@ def train(models, optimizers, dataloader, params):
                 #t.set_postfix(loss='{:05.3f}'.format(g_loss.data))
                 #t.update()
 
-                if it % 250 == 0:
+                if it % 100 == 0:
                     logging.info('Generator loss: %f' % g_loss.data)
                     logging.info('Discriminator loss: %f' % d_loss.data)
                     fig_path = os.path.join(params.output_dir, 'figures', 'iter{}.png'.format(it))
